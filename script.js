@@ -3,6 +3,12 @@ let score = 0;
 let currentAnswer = '';
 let currentQuoteText = '';
 
+const Characters = [
+    "Naruto Uzumaki", "Monkey D. Luffy", "Eren Yeager", "Goku", "Levi Ackerman",
+    "Saitama", "Kakashi Hatake", "Light Yagami", "Killua Zoldyck", "Roronoa Zoro",
+    "Mikasa Ackerman", "Tanjiro Kamado", "Nezuko Kamado", "Satoru Gojo", "Sukuna",
+    "Kouichi Sakakibara", "Shigeo Kageyama", "Izuku Midoriya", "Shoto Todoroki", "Natsu Dragneel"
+];
 const quoteElement = document.getElementById("quote");
 const scoreSpan = document.getElementById("scoreSpan");
 const choicesContainer = document.getElementById("choices");
