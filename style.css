@@ -25,21 +25,36 @@ body {
 }
 
 .card{
-    border: 1px solid black;
     margin: 20px auto;
     max-width: 500px;
-    background-color: #c4ba62;
     
 }
 
 .choice-btn{
     cursor: pointer;
-    width: 80%;
+    width: 50%;
+    height: 50px;
     padding: 10px;
+    max-width: 300px;
+    border-radius: 10px;
     margin: 5px 0;
-    background-color: #cdf80fda;
+    background-color: #d8e60fda;
     cursor: pointer;
-    font-size: 17px
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: bold;
+    
+    
+}
+
+.title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+#quote{
+    font-size: 1.2rem;
+    font-style: italic;
 }
 /* list of things that happen when you hover over the button */
 .choice-btn:hover{
