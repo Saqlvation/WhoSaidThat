@@ -18,6 +18,17 @@ body {
     font-size: 2rem;
     top: 50px;
     color: #bb2020;
+    top: 20px;
+    right: 20px;
+    position: fixed;
+
+}
+
+.lives {
+    font-size: 2rem;
+    color: #bb2020;
+    position: fixed;
+    top: 20px;
 }
 
 #nextBtn{
