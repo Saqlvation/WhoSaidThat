@@ -85,8 +85,10 @@ async function loadQuestion() {
     // uses the backup quotes
         const randomBackup = backupQuotes[Math.floor(Math.random() * backupQuotes.length)];
         currentQuoteText = randomBackup.quote;
-        currentCorrectAnswer = randomBackup.character;
+        currentAnswer = randomBackup.character;
 }
+    quoteElement.innerText = `"${currentQuoteText}"`;
+    generateChoices(currentAnswer);
 }
 
 function generateChoices(correctAnswer) {
@@ -97,11 +99,11 @@ function generateChoices(correctAnswer) {
     let allChoices = [correctAnswer, ...selectedWrongChoices];
     allChoices.sort(() => 0.5 - Math.random()); // shuffle all choices
 
-    allChoices.forEach(choice => {
+allChoices.forEach(choice => {
         const button = document.createElement('button');
         button.textContent = choice;
         button.classList.add('choice-btn'); // to style the buttons
-        button.addEventListener('click', () => handleChoiceClick(choice));
+        button.addEventListener('click', () => handleAnswers(choice, button));
         choicesContainer.appendChild(button);
     });
 }
@@ -118,7 +120,12 @@ function handleAnswers(selectedChoice, clickedButton) {
         clickedButton.style.backgroundColor = 'green';
     } else {
         clickedButton.style.backgroundColor = 'red';
-        currentAnswerElement.textContent = `The correct answer was: ${currentAnswer}`;
+        // for some reason copilot decided to add a random line that made no sense, fixed it ny making the button with the right answer turn green
+        allButtons.forEach(button => {
+            if(button.textContent === currentAnswer) {
+                button.style.backgroundColor = 'green';
+            }
+        });
     }
     nextButton.classList.remove("hidden");
     
