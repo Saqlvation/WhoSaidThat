@@ -106,12 +106,15 @@ function handleAnswers(selectedChoice, clickedButton) {
         score++;
         scoreSpan.textContent = score;
         clickedButton.style.backgroundColor = 'green';
+        clickedButton.style.color = 'white';
     } else {
         clickedButton.style.backgroundColor = 'red';
+        clickedButton.style.color = 'white';
         // for some reason copilot decided to add a random line that made no sense, fixed it ny making the button with the right answer turn green
         allButtons.forEach(button => {
             if(button.textContent === currentAnswer) {
                 button.style.backgroundColor = 'green';
+                button.style.color = 'white';
             }
         });
     }
