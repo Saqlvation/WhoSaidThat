@@ -69,7 +69,7 @@ async function loadQuestion() {
     }
 }catch (error) {
     console.error("error", error);
-    quoteElement.innerText = "error";
+    quoteElement.innerText = "rate limit reached. wait 1 hour.";
 }
 }
 
