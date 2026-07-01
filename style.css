@@ -1,14 +1,17 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    background-image: radial-gradient(#04aff3a1 1px, transparent 1px);
     background-size: 12px 10px;
-    background-color: #f3efef00;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    font-size: 18px;
+    zoom: 1.3; /* zooms in the page by 30% i was too lazy to do it individually,,*/
+
 }
 
 #start {
     font-size: 1.5rem;
-    color: #c4ba62
+    color: #e0e0e0
 }
 
 .score {
@@ -38,11 +41,12 @@ body {
     max-width: 300px;
     border-radius: 10px;
     margin: 5px 0;
-    background-color: #d8e60fda;
+    background-color: #0f3460;
     cursor: pointer;
     font-size: 20px;
     margin: 10px 0;
     font-weight: bold;
+    color: #e0e0e0;
     
     
 }
@@ -55,10 +59,11 @@ body {
 #quote{
     font-size: 1.2rem;
     font-style: italic;
+    background-color: #16213e;
 }
 /* list of things that happen when you hover over the button */
 .choice-btn:hover{
-    background-color: #47f801;
+    background-color: #e94560;
     transform: scale(1.05); /* makes the button slightly bigger when u hover it */
 
 }
