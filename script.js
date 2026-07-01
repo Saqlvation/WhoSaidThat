@@ -3,7 +3,7 @@ let score = 0;
 let currentAnswer = '';
 let currentQuoteText = '';
 
-const Characters = [
+const characters = [
     "Naruto Uzumaki", "Monkey D. Luffy", "Eren Yeager", "Goku", "Levi Ackerman",
     "Saitama", "Kakashi Hatake", "Light Yagami", "Killua Zoldyck", "Roronoa Zoro",
     "Mikasa Ackerman", "Tanjiro Kamado", "Nezuko Kamado", "Satoru Gojo", "Sukuna",
@@ -46,6 +46,19 @@ async function fetchQuote() {
 }
 fetchQuote();
 */
+
+
+
+
+
+
+// Since the API is very rate limited i decided to use a local array of quotes 
+
+const backupQuotes = [
+    { quote: "If you don't take risks, you can't create a future!", character: "Monkey D. Luffy" },
+    { quote: "If you win, you live. If you lose, you die. If you don't fight, you can't win!", character: "Eren Yeager" },
+    { quote: "I'm not gonna run away, I never go back on my word!", character: "Naruto Uzumaki" }
+];
 async function loadQuestion() {
     quoteElement.textContent = "Loading the next quote..."; // just as placeholder
     choicesContainer.innerHTML = '';
@@ -69,7 +82,10 @@ async function loadQuestion() {
     }
 }catch (error) {
     console.error("error", error);
-    quoteElement.innerText = "rate limit reached. wait 1 hour.";
+    // uses the backup quotes
+        const randomBackup = backupQuotes[Math.floor(Math.random() * backupQuotes.length)];
+        currentQuoteText = randomBackup.quote;
+        currentCorrectAnswer = randomBackup.character;
 }
 }
 
