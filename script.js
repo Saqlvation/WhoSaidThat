@@ -1,5 +1,6 @@
 // variables to keep track of score
 let score = 0;
+let lives = 3;
 let currentAnswer = '';
 let currentQuoteText = '';
 
@@ -13,6 +14,7 @@ const quoteElement = document.getElementById("quote");
 const scoreSpan = document.getElementById("scoreSpan");
 const choicesContainer = document.getElementById("choices");
 const nextButton = document.getElementById("nextBtn");
+const livesSpan = document.getElementById("livesSpan");
 
 
 
@@ -108,6 +110,8 @@ function handleAnswers(selectedChoice, clickedButton) {
         clickedButton.style.backgroundColor = 'green';
         clickedButton.style.color = 'white';
     } else {
+        lives--;
+        livesSpan.textContent = lives;
         clickedButton.style.backgroundColor = 'red';
         clickedButton.style.color = 'white';
         // for some reason copilot decided to add a random line that made no sense, fixed it ny making the button with the right answer turn green
