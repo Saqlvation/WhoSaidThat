@@ -54,41 +54,29 @@ fetchQuote();
 
 // Since the API is very rate limited i decided to use a local array of quotes 
 
-const backupQuotes = [
-    { quote: "If you don't take risks, you can't create a future!", character: "Monkey D. Luffy" },
-    { quote: "If you win, you live. If you lose, you die. If you don't fight, you can't win!", character: "Eren Yeager" },
-    { quote: "I'm not gonna run away, I never go back on my word!", character: "Naruto Uzumaki" }
-];
-async function loadQuestion() {
-    quoteElement.textContent = "Loading the next quote..."; // just as placeholder
-    choicesContainer.innerHTML = '';
-    nextButton.style.display = 'none'; // simplt hides it
 
+async function loadQuestion() {
+    quoteElement.textContent = "Loading the next quote...";
+    choicesContainer.innerHTML = '';
+    nextButton.style.display = 'none';
+    
     try {
         const response = await fetch('https://api.animechan.io/v1/quotes/random');
         const result = await response.json();
-    
-    if(result.status === "success" && result.data) {
-        currentQuoteText = result.data.content;
-        currentAnswer = result.data.character.name;
-
-        // displays the quote
-        quoteElement.innerText = `"${currentQuoteText}"`;
-
-        // starts to build the choices
-        generateChoices(currentAnswer);
-    } else {
-        quoteElement.innerText = "error";
+        
+        if(result.status === "success" && result.data) {
+            currentQuoteText = result.data.content;
+            currentAnswer = result.data.character.name;
+            quoteElement.textContent = `"${currentQuoteText}"`;
+            generateChoices(currentAnswer);
+            return; 
+        }
+    } catch (error) {
+        console.error("error:", error);
     }
-}catch (error) {
-    console.error("error", error);
-    // uses the backup quotes
-        const randomBackup = backupQuotes[Math.floor(Math.random() * backupQuotes.length)];
-        currentQuoteText = randomBackup.quote;
-        currentAnswer = randomBackup.character;
-}
-    quoteElement.innerText = `"${currentQuoteText}"`;
-    generateChoices(currentAnswer);
+    
+    // runs this only if api fails
+    useBackupQuote(); // function that starught up uses the backups
 }
 
 function generateChoices(correctAnswer) {
@@ -127,9 +115,25 @@ function handleAnswers(selectedChoice, clickedButton) {
             }
         });
     }
-    nextButton.classList.remove("hidden");
+    nextButton.style.display = 'inline-block'; // shows the next button
     
 }
+function useBackupQuote() {
+    
+    const backupQuotes = [
+    { quote: "If you don't take risks, you can't create a future!", character: "Monkey D. Luffy" },
+    { quote: "If you win, you live. If you lose, you die. If you don't fight, you can't win!", character: "Eren Yeager" },
+    { quote: "I'm not gonna run away, I never go back on my word!", character: "Naruto Uzumaki" }
+];
+    
+    // random backup quote
+    const randomBackup = backupQuotes[Math.floor(Math.random() * backupQuotes.length)];
+    currentQuoteText = randomBackup.quote;
+    currentAnswer = randomBackup.character;
+    quoteElement.textContent = `"${currentQuoteText}"`;
+    generateChoices(currentAnswer);
+}
+
 // listens for the click and loads the next question
 nextButton.addEventListener("click", loadQuestion);
 // starts the game by loading the first question
