@@ -1,6 +1,7 @@
 // variables to keep track of score
 let score = 0;
 let currentAnswer = '';
+let currentQuoteText = '';
 
 const quoteElement = document.getElementById("quote");
 const scoreSpan = document.getElementById("scoreSpan");
