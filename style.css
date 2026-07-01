@@ -28,5 +28,22 @@ body {
     border: 1px solid black;
     margin: 20px auto;
     max-width: 500px;
+    background-color: #c4ba62;
     
+}
+
+.choice-btn{
+    cursor: pointer;
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #cdf80fda;
+    cursor: pointer;
+    font-size: 17px
+}
+/* list of things that happen when you hover over the button */
+.choice-btn:hover{
+    background-color: #47f801;
+    transform: scale(1.05); /* makes the button slightly bigger when u hover it */
+
 }
