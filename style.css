@@ -20,4 +20,12 @@ body {
     padding: 10px 10px;
     background-color: #c4ba62;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.card{
+    border: 1px solid black;
+    margin: 20px auto;
+    max-width: 500px;
+    
 }
